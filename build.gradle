@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.web3j:core:4.9.0'
+
+    // implementation group: 'log4j', name: 'log4j', version: '1.2.17'
+    // implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    // implementation group: 'org.slf4j', name: 'log4j-over-slf4j', version: '1.7.25'
+    // implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.10'
+    testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.10'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.10'
+    testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.10'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
