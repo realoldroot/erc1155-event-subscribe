@@ -1,4 +1,4 @@
-package com.joygame.joytd.nft;
+package com.exapmple.event;
 
 import org.web3j.abi.EventValues;
 import org.web3j.abi.TypeReference;
@@ -11,26 +11,26 @@ import org.web3j.tx.Contract;
 import java.util.Arrays;
 
 /**
- * NFT授权事件
+ * 授权事件
  *
  * @author zhengenshen@gmail.com
  * @date 2022/4/2 15:49
  */
-public class NftApprovalDataParser implements DataParser {
+public class ApprovalDataParser implements EventDataParser {
 
     @Override
-    public ChainMessage parse(Log respLog) {
-        EventValues eventValues = Contract.staticExtractEventParameters(getEvent(), respLog);
+    public ChainMessage parse(Log eventData) {
+        EventValues eventValues = Contract.staticExtractEventParameters(getEvent(), eventData);
         Address address = (Address) eventValues.getIndexedValues().get(0);
         Address operator = (Address) eventValues.getIndexedValues().get(1);
         Bool approved = (Bool) eventValues.getNonIndexedValues().get(0);
-        NftApprovalEventMessage ctb = new NftApprovalEventMessage();
-        ctb.setBlockNumber(respLog.getBlockNumber().longValue());
-        ctb.setTransactionHash(respLog.getTransactionHash());
-        ctb.setAddress(address.getValue());
-        ctb.setOperator(operator.getValue());
-        ctb.setApproved(approved.getValue());
-        return ctb;
+        ApprovalEventMessage t = new ApprovalEventMessage();
+        t.setBlockNumber(eventData.getBlockNumber().longValue());
+        t.setTransactionHash(eventData.getTransactionHash());
+        t.setAddress(address.getValue());
+        t.setOperator(operator.getValue());
+        t.setApproved(approved.getValue());
+        return t;
     }
 
     @Override

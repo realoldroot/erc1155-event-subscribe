@@ -1,4 +1,4 @@
-package com.joygame.joytd.nft;
+package com.exapmple.event;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class NftApprovalEventMessage implements ChainMessage {
+public class ApprovalEventMessage implements ChainMessage {
 
     private long blockNumber;
 
@@ -23,9 +23,4 @@ public class NftApprovalEventMessage implements ChainMessage {
 
     private boolean approved;
 
-
-    @Override
-    public String getStreamKey() {
-        return NftConstDefine.APPROVAL_STREAM_KEY;
-    }
 }

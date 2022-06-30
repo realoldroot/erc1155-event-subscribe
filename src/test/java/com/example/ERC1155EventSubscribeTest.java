@@ -26,7 +26,8 @@ public class ERC1155EventSubscribeTest {
         long startBlockNumber = 20637990L;
         //需要查询的事件日志
 
-        List<EventDataParser> events = Stream.of(new TransferBatchEventDataParser(),
+        List<EventDataParser> events = Stream.of(
+                new TransferBatchEventDataParser(),
                 new TransferSingleEventDataParser()).collect(Collectors.toList());
 
         ChainEventSubscribe subscribe = new ChainEventSubscribe(chainAddress, Arrays.asList(contractAddress), events, startBlockNumber);
